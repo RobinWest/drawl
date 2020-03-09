@@ -1,0 +1,29 @@
+{
+  "name": "drawl",
+  "version": "0.0.1",
+  "description": "A simple canvas drawing library. Aimed at providing common 2D canvas functionality such as draw, erase, undo and clear in an easy to use package, with no dependencies! (Currently in alpha)",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "test": "npm run test"
+  },
+  "keywords": [
+    "canvas",
+    "draw",
+    "paint",
+    "drawing"
+  ],
+  "author": {
+    "name": "Robin West",
+    "email": "drawl@robinwest.co.uk"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
