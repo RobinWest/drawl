@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "publish": "np --no-tests --no-yarn --contents=dist",
     "test": "npm run test"
   },
   "keywords": [
