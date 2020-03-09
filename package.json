@@ -1,6 +1,6 @@
 {
   "name": "drawl",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple canvas drawing library. Aimed at providing common 2D canvas functionality such as draw, erase, undo and clear in an easy to use package, with no dependencies! (Currently in alpha)",
   "main": "index.js",
   "scripts": {
@@ -14,8 +14,8 @@
     "drawing"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/RobinWest/drawl"
+    "type": "git",
+    "url": "https://github.com/RobinWest/drawl"
   },
   "author": {
     "name": "Robin West",
