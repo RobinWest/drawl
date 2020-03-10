@@ -1,5 +1,7 @@
 const path = require('path');
 
+const CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: './index.js',
   output: {
@@ -9,6 +11,12 @@ module.exports = {
     libraryTarget: 'commonjs2',
   },
   mode: "production",
+  plugins: [
+    new CopyPlugin([
+      { from: './package.json', to: './' },
+      { from: './README.md', to: './' }
+    ]),
+  ],
   module: {
     rules: [
       {
