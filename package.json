@@ -2,10 +2,10 @@
   "name": "drawl",
   "version": "0.0.6",
   "description": "A simple canvas drawing library. Aimed at providing common 2D canvas functionality such as draw, erase, undo and clear in an easy to use package, with no dependencies! (Currently in alpha)",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "publish": "np --no-tests --no-yarn --contents=dist",
+    "publish": "np --no-tests --no-yarn",
     "test": "npm run test"
   },
   "keywords": [
