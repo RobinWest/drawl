@@ -12,10 +12,16 @@ export function setupEventListeners() {
   this._canvasElement.addEventListener('touchmove', handleTouchMove.bind(this));
   this._canvasElement.addEventListener('mousemove', handleTouchMove.bind(this));
 
+  // TODO touchcancel?
+  // Stop the line from pinging back in when you go out. This is kind of annoying, so something better needs to be done.
+  this._canvasElement.addEventListener('mouseout', handleTouchEnd.bind(this));
+
   this._canvasElement.addEventListener('touchend', handleTouchEnd.bind(this));
   this._canvasElement.addEventListener('mouseup', handleTouchEnd.bind(this));
 }
 export function handleTouchStart(e) {
+  // TODO Check e.buttons for count
+
   // Check for single touches - ignore multi touch
   if(TOUCH_EVENTS.includes(e.type) && e.touches.length !== 1) {
     return;
@@ -48,7 +54,6 @@ export function handleTouchMove(e) {
 
   const eventPositions = getEventPositions(e, this.canvasBounds);
 
-  // TODO drawActive=false if out of bounds
   moveDraw.call(this, eventPositions.x, eventPositions.y, this.canvasContext);
 
   this.addChunkAction({

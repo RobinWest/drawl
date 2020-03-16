@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Drawl from 'drawl';
+import Drawl from '@drawl/drawl';
 
 import Toolbar from '@/components/Toolbar';
 
