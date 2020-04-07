@@ -83,8 +83,6 @@ class Drawl {
         if(action.type === CHUNK_ACTION_START) {
           const { x, y } = getAbsolutePositions(action.relativeX, action.relativeY, canvasBounds.width, canvasBounds.height);
 
-          // TODO use the saved brush styles here
-
           this.setBrushMode(action.brushMode);
           startDraw.call(this, x, y, this.canvasContext, action.brushStyles);
         }
@@ -96,12 +94,14 @@ class Drawl {
           moveDraw.call(this, x, y, this.canvasContext);
         }
 
+        if(action.type === CHUNK_ACTION_END) {
+          endDraw.call(this);
+        }
+
         if(action.type === CHUNK_ACTION_CLEAR) {
           this.resetCanvas();
         }
       });
-
-      endDraw.call(this);
     });
 
     this.setBrushMode(prevBrushMode);
@@ -136,7 +136,12 @@ class Drawl {
     this.redrawCanvas();
   }
   clearCanvas(e) {
-    // Add an empty history chunk so this can be undone
+    // We don't need to clear twice in a row
+    if(this.previousChunk[0].type === 'clear') {
+      return;
+    }
+
+    // Add a history chunk so this can be undone
     this._chunkHistory.push([{
       type: CHUNK_ACTION_CLEAR,
     }]);
@@ -147,7 +152,12 @@ class Drawl {
     return this.canvasElement.toDataURL();
   }
 
-
+  get previousChunk() {
+    return this._chunkHistory[this._chunkHistory.length - 1];
+  }
+  set previousChunk(val) {
+    throw new Error('You cannot set previousChunk.');
+  }
   get currentBrushStyles() {
     switch(this.brushMode) {
       case 'pencil':

@@ -63,7 +63,16 @@ export function handleTouchMove(e) {
   });
 }
 export function handleTouchEnd(e) {
+  // Don't push another chunk if we hadn't started a drawing
+  if(!this._drawActive) {
+    return;
+  }
+
   e.preventDefault();
+
+  this.addChunkAction({
+    type: CHUNK_ACTION_END,
+  });
 
   this.saveChunk(this._currentChunk);
   this.resetChunk();
@@ -72,9 +81,6 @@ export function handleTouchEnd(e) {
 
   endDraw.call(this);
 
-  this.addChunkAction({
-    type: CHUNK_ACTION_END,
-  });
 }
 
 export default {
