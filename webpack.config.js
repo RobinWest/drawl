@@ -11,12 +11,12 @@ module.exports = {
     libraryTarget: 'commonjs2',
   },
   mode: "production",
-  plugins: [
-    new CopyPlugin([
-      { from: './package.json', to: './' },
-      { from: './README.md', to: './' }
-    ]),
-  ],
+  // plugins: [
+  //   new CopyPlugin([
+  //     { from: './package.json', to: './' },
+  //     { from: './README.md', to: './' }
+  //   ]),
+  // ],
   module: {
     rules: [
       {
