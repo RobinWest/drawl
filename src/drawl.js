@@ -17,6 +17,8 @@ class Drawl {
   _canvasElement;
   _canvasContext;
 
+  initialSize = {};
+
   _drawActive = false;
   _prevX;
   _prevY;
@@ -43,6 +45,11 @@ class Drawl {
     this._canvasElement = canvasEl;
     this._canvasContext = this.canvasElement.getContext('2d');
 
+    const { width, height } = canvasEl.getBoundingClientRect();
+
+    this.initialSize.width = width;
+    this.initialSize.height = height;
+
     setupEventListeners.call(this);
   }
 
@@ -67,6 +74,23 @@ class Drawl {
   }
 
   // - Canvas functions
+  scaleCanvas(width, height) {
+    const hScale = width / this.initialSize.width;
+    const vScale = height / this.initialSize.height;
+
+    let transformOrigin = 'left top';
+
+    // TODO 'left center' version?
+    if(hScale !== 1 && vScale === 1) {
+      transformOrigin = 'center top';
+    }
+
+    this.canvasElement.style.transform = `scale(${hScale}, ${vScale})`;
+    this.canvasElement.style.transformOrigin = transformOrigin;
+  }
+  /**
+   * Left in for legacy reasons - slower than scaleCanvas()
+   */
   resizeCanvas(width, height) {
     this.canvasElement.width = width;
     this.canvasElement.height = height;

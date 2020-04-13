@@ -27,19 +27,27 @@ export default {
     };
   },
   mounted() {
+    const { width, height } = this.getContainerSize();
+
+    // Set the initial canvas size to the parent container
+    this.$refs.canvasEl.width = width;
+    this.$refs.canvasEl.height = height;
+
     this.drawl = new Drawl(this.$refs.canvasEl);
 
     window.addEventListener('resize', this.resizeDrawlCanvas);
-
-    this.resizeDrawlCanvas();
   },
   methods: {
     resizeDrawlCanvas() {
-      const { width, height } = this.$refs.canvasContainer.getBoundingClientRect();
+    const { width, height } = this.getContainerSize();
 
-      this.drawl.resizeCanvas(width, height);
+      this.drawl.scaleCanvas(width, height);
     },
+    getContainerSize() {
+      const { clientWidth, clientHeight } = this.$refs.canvasContainer;
 
+      return { width: clientWidth, height: clientHeight };
+    },
     changeTool(tool) {
       if(!this.drawl)
         return;
