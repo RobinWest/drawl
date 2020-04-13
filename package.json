@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "unpkg": "dist/index.js",
   "files": [
-    "dist",
+    "dist/index.js",
     "./package.json"
   ],
   "scripts": {
