@@ -1,6 +1,6 @@
 {
   "name": "drawl",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "A simple canvas drawing library. Aimed at providing common 2D canvas functionality such as draw, erase, undo and clear in an easy to use package, with no dependencies! (Currently in alpha)",
   "main": "dist/index.js",
   "unpkg": "dist/index.js",
